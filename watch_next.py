@@ -13,6 +13,9 @@ def movie_similarity(description):
     similarity_dict = {}
 
     # iterate through movies.txt file contents, spliting titles from respective descriptions, tokenising the latter & calculating similarity
+    with open("movies.txt", "r", encoding = "utf-8") as movies:
+        contents = movies.readlines()
+
     for entry in contents:
         title, text = entry.split(" :")
         text_doc = nlp(text)
@@ -28,10 +31,6 @@ def movie_similarity(description):
     print(f"The film most similar to the inputed description is {max_key}. It has a {round(max_value,2)}% similarity")
 
 # --- Main body ---
-
-# extract the contents of movies.txt file
-with open("movies.txt", "r", encoding = "utf-8") as movies:
-    contents = movies.readlines()
 
 planet_hulk = """Will he save
 their world or destroy it? When the Hulk becomes too dangerous for the
